@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/mStyle.css">
+  <link rel="stylesheet" type="text/css" href="jqueryF/jquery-ui.css">
+
+  <script type="text/javascript" src="jqueryF/Jquery.js"></script>
+  <script type="text/javascript" src="jqueryF/jquery-ui.js"></script>
+
+
+
+
+
+  <script type="text/javascript">
+    $("document").ready(function()
+
+
+
+
+
+    { 
+
+
+      var x =0;
+      var matched=5 ;
+      var matched2=4 ;
+      var clickCount=0;
+      var remaining=8;
+
+
+      $("#tA").click(function()
+      {
+
+        x =0;
+        matched=5 ;
+        matched2=4 ;
+        clickCount=0;
+        remaining=8;
+ 
+        document.getElementById("finished").innerHTML="Remaining : "+remaining;
+        document.getElementById("clicks").innerHTML="Click Counter  : "+clickCount;
+        $( ".in" ).css("transform","rotateY(180deg)");
+        $("#frnt").css("z-index","1");
+        $("#frnt").css("opacity","0");
+        $(".flip-card").css("visibility","visible");
+        $("#tA").css("pointer-events","none");
+          
+        setTimeout(function(){
+
+
+         $(".flip-card").css("pointer-events","auto");
+        
+          $( ".in" ).css("transform","rotateY(0deg)");
+          $("#frnt").css("z-index","-1");
+          $("#frnt").css("opacity","0");
+
+          
+        }, 2000);
+
+
+        setTimeout(function(){
+           $("#tA").css("pointer-events","auto");
+         },3200);
+      });
+
+
+
+      $( ".in" ).css("transform","rotateY(180deg)");
+      $("#frnt").css("z-index","1");
+      $("#frnt").css("opacity","0");
+      $("#tA").css("pointer-events","none");
+
+      setTimeout(function(){
+        
+
+        $( ".in" ).css("transform","rotateY(0deg)");
+        $("#frnt").css("z-index","-1");
+        $("#frnt").css("opacity","0");
+
+      }, 2500);
+
+       setTimeout(function(){
+           $("#tA").css("pointer-events","auto");
+         },3000);
+
+      $(".flip-card").click(function()
+      {
+
+        clickCount++;
+        document.getElementById("clicks").innerHTML="Click Counter  : "+clickCount;
+        $(this).css("pointer-events","none");
+
+        $( this ).children( ".in" ).css("transform","rotateY(180deg)");
+
+
+        if(x==0)
+        { 
+
+
+         x=1;
+         matched=$(this).attr('class').split(' ')[1];
+
+
+       }
+
+       else {
+
+         matched2=$(this).attr('class').split(' ')[1];
+         $("#frnt").css("z-index","1");
+
+
+
+         if(matched2==matched)
+         {
+           remaining--;
+           document.getElementById("finished").innerHTML="Remaining : "+remaining;
+           setTimeout(function(){
+
+             $('.'+matched).css("visibility","hidden");
+             if (remaining==0) {
+               $("#frnt").css("z-index","100");
+               $("#frnt").css("opacity","1");
+             }
+
+             else   $("#frnt").css("z-index","-1");
+
+
+           }, 1000);
+
+
+
+
+         }
+         else{
+
+           $('.'+matched).css("pointer-events","auto");
+           $('.'+matched2).css("pointer-events","auto");
+
+
+           setTimeout(function(){
+
+            $( '.'+matched ).children(".in").css("transform","rotate(0deg)");
+            $( '.'+matched2 ).children(".in").css("transform","rotate(0deg)");
+
+            if (remaining==0) {
+             $("#frnt").css("z-index","100");
+             $("#frnt").css("opacity","1");
+
+
+           }
+
+           else   $("#frnt").css("z-index","-1");
+
+
+         }, 1500);
+
+
+
+
+
+
+
+
+
+
+
+         }   
+         
+         x=0;
+
+       }
+
+
+
+       /* $(this).css("background-color","red");*/
+
+
+
+
+       if(clickCount<=16){ 
+        document.getElementById("frnt").innerHTML="PERFECT ";
+
+      }
+      else if(clickCount>16&&clickCount<=25){ 
+        document.getElementById("frnt").innerHTML="EXCELLENT ";
+
+      }
+
+      else{
+        document.getElementById("frnt").innerHTML="GOOD ";
+
+      }
+
+
+
+
+
+    });
+
+
+      document.getElementById("finished").innerHTML="Remaining : "+remaining;
+      document.getElementById("clicks").innerHTML="Click Counter  : "+clickCount;
+
+
+
+
+
+    });
+
+
+
+
+
+  </script>
+
+
+
+
+
+</head>
+<body>
+
+
+
+  <center>
+
+    <div id="frnt" style="opacity: 0  ;z-index: -1;margin-left: -230px;width: 460px;height: 460px;background-color: #fedcba;display: inline-block;position: absolute ;font-size: 40px;line-height: 460px;">
+
+    </div>
+    <section id="section">
+
+      <div  class="flip-card xx ">
+        <div class="flip-card-inner in ">
+          <div class="flip-card-front" >
+          </div>
+          <div class="flip-card-back" >
+            <img src="images/one.png">
+          </div>
+        </div>
+      </div>
+
+      <div  class="flip-card xx ">
+        <div class="flip-card-inner in ">
+          <div class="flip-card-front" >
+          </div>
+          <div class="flip-card-back" >
+            <img src="images/one.png">
+          </div>
+        </div>
+      </div>
+      <div  class="flip-card vv " >
+        <div class="flip-card-inner in ">
+          <div class="flip-card-front" >
+          </div>
+          <div class="flip-card-back" >
+            <img src="images/two.png">
+          </div>
+        </div>
+      </div>
+
+      <div  class="flip-card vv " >
+        <div class="flip-card-inner in ">
+          <div class="flip-card-front" >
+          </div>
+          <div class="flip-card-back" >
+            <img src="images/two.png">
+          </div>
+        </div>
+      </div>
+      <div  class="flip-card gg " >
+        <div class="flip-card-inner in ">
+          <div class="flip-card-front" >
+          </div>
+          <div class="flip-card-back" >
+            <img src="images/th.png">
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card gg " >
+        <div class="flip-card-inner in ">
+          <div class="flip-card-front" >
+          </div>
+          <div class="flip-card-back" >
+            <img src="images/th.png">
+          </div>
+        </div>
+      </div>
+      <div  class="flip-card ss ">
+        <div class="flip-card-inner in ">
+          <div class="flip-card-front" >
+          </div>
+          <div class="flip-card-back"         >
+            <img src="images/four.png">
+          </div>
+        </div>
+      </div>
+
+      <div  class="flip-card ss " >
+        <div class="flip-card-inner in ">
+          <div class="flip-card-front" >
+          </div>
+          <div class="flip-card-back" >
+           <img src="images/four.png">
+         </div>
+       </div>
+     </div>
+     <div  class="flip-card aa " >
+      <div class="flip-card-inner in ">
+        <div class="flip-card-front" >
+        </div>
+        <div class="flip-card-back" >
+          <img src="images/five.png">
+        </div>
+      </div>
+    </div>
+    
+    <div  class="flip-card aa " >
+      <div class="flip-card-inner in ">
+        <div class="flip-card-front" >
+        </div>
+        <div class="flip-card-back" >
+         <img src="images/five.png">
+       </div>
+     </div>
+   </div>
+   <div class="flip-card rr " >
+    <div class="flip-card-inner in ">
+      <div class="flip-card-front" >
+      </div>
+      <div class="flip-card-back" >
+       <img src="images/six.png">
+     </div>
+   </div>
+ </div>
+
+ <div  class="flip-card rr " >
+  <div class="flip-card-inner in ">
+    <div class="flip-card-front" >
+    </div>
+    <div class="flip-card-back" >
+     <img src="images/six.png">
+   </div>
+ </div>
+</div>
+<div  class="flip-card ee " >
+  <div class="flip-card-inner in ">
+    <div class="flip-card-front" >
+    </div>
+    <div class="flip-card-back" >
+     <img src="images/seven.jpg">
+   </div>
+ </div>
+</div>
+
+<div  class="flip-card ee ">
+  <div class="flip-card-inner in ">
+    <div class="flip-card-front" >
+    </div>
+    <div class="flip-card-back" >
+      <img src="images/seven.jpg">
+    </div>
+  </div>
+</div>  
+<div  class="flip-card ww ">
+  <div class="flip-card-inner in ">
+    <div class="flip-card-front" >
+    </div>
+    <div class="flip-card-back" >
+      <img src="images/eight.png">
+    </div>
+  </div>
+</div>
+
+<div  class="flip-card ww " >
+  <div class="flip-card-inner in ">
+    <div class="flip-card-front" >
+    </div>
+    <div class="flip-card-back" >
+      <img src="images/eight.png">
+    </div>
+  </div>
+</div>
+
+
+</section>
+
+
+<br><br>
+<footer style="background-color: #abcdf1; width: 460px; height: 115px; box-shadow: -10px -10px #fedcba;text-align: left;padding: 15px;">
+  <h2 id="clicks" > </h2>
+  <h2 id="finished" > </h2>
+
+  <button id="tA" >TRY AGAIN </button>
+
+</footer>
+
+</center>
+
+
+
+
+</body>
+</html>
